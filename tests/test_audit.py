@@ -1,6 +1,6 @@
 import json
 
-from gatekeeper_cli.audit import AuditLog, redact
+from rentless_cli.audit import AuditLog, redact
 
 
 def test_audit_log_appends_and_reads(tmp_path):

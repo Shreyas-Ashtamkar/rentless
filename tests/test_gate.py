@@ -1,6 +1,6 @@
-from gatekeeper_cli.classifier import classify_shell_command
-from gatekeeper_cli.gate import ConfirmationGate
-from gatekeeper_cli.ruleset import default_ruleset
+from rentless_cli.classifier import classify_shell_command
+from rentless_cli.gate import ConfirmationGate
+from rentless_cli.ruleset import default_ruleset
 
 
 def test_t1_auto_approved_no_prompt():

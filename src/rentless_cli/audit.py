@@ -16,7 +16,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-DEFAULT_LOG_PATH = Path.home() / ".local" / "share" / "gatekeeper-cli" / "audit.jsonl"
+DEFAULT_LOG_PATH = Path.home() / ".local" / "share" / "rentless-cli" / "audit.jsonl"
 
 # Best-effort redaction of common secret shapes before they ever hit disk.
 _SECRET_PATTERNS = [

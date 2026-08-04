@@ -1,6 +1,6 @@
-from gatekeeper_cli.classifier import classify_mcp_call, classify_shell_command
-from gatekeeper_cli.ruleset import default_ruleset
-from gatekeeper_cli.tiers import Tier
+from rentless_cli.classifier import classify_mcp_call, classify_shell_command
+from rentless_cli.ruleset import default_ruleset
+from rentless_cli.tiers import Tier
 
 
 def test_readonly_commands_are_tier1():

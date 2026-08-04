@@ -1,7 +1,7 @@
 import pytest
 
-from gatekeeper_cli.ruleset import Ruleset, default_ruleset
-from gatekeeper_cli.tiers import Tier
+from rentless_cli.ruleset import Ruleset, default_ruleset
+from rentless_cli.tiers import Tier
 
 
 def test_set_shell_rule_refuses_to_loosen_below_t3():

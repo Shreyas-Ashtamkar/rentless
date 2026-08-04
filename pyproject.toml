@@ -3,7 +3,7 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "gatekeeper-cli"
+name = "rentless-cli"
 version = "0.1.0"
 description = "Tiered-Permission CLI AI Agent — an operational safety gate around LLM-driven shell/MCP command execution."
 readme = "README.md"
@@ -22,7 +22,7 @@ dev = [
 ]
 
 [project.scripts]
-gatekeeper = "gatekeeper_cli.cli:app"
+rentless = "rentless_cli.cli:app"
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -21,7 +21,7 @@ import yaml
 
 from .tiers import MIN_LOOSENABLE_TIER, Tier
 
-DEFAULT_RULESET_PATH = Path.home() / ".config" / "gatekeeper-cli" / "ruleset.yaml"
+DEFAULT_RULESET_PATH = Path.home() / ".config" / "rentless-cli" / "ruleset.yaml"
 
 
 @dataclass

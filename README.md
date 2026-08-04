@@ -1,6 +1,6 @@
 # rentless
 
-**gatekeeper-cli** — a Tiered-Permission CLI AI Agent.
+**rentless-cli** — a Tiered-Permission CLI AI Agent.
 
 Implements the SRS in `SRS_Tiered_Permission_CLI_Agent-1.pdf`: a command-line agent
 that plans tasks with an LLM but gates every proposed shell command or MCP tool
@@ -20,15 +20,15 @@ are decomposed and classified sub-command by sub-command.
 
 ## Project layout
 
-- `src/gatekeeper_cli/tiers.py` — tier definitions and defaults.
-- `src/gatekeeper_cli/ruleset.py` — versioned, human-editable YAML ruleset.
-- `src/gatekeeper_cli/classifier.py` — deterministic classifier (bashlex-based).
-- `src/gatekeeper_cli/gate.py` — confirmation flow (y/n, typed phrase, deny-by-default).
-- `src/gatekeeper_cli/audit.py` — append-only JSONL audit log with secret redaction.
-- `src/gatekeeper_cli/executor.py` — subprocess execution wrapper with per-tier timeouts.
-- `src/gatekeeper_cli/planner.py` — pluggable LLM planner interface (`NullPlanner` offline default).
-- `src/gatekeeper_cli/mcp_host.py` — MCP server registration and per-server scoping stub.
-- `src/gatekeeper_cli/cli.py` — CLI commands: `run`, `classify`, `rules list`, `logs query`.
+- `src/rentless_cli/tiers.py` — tier definitions and defaults.
+- `src/rentless_cli/ruleset.py` — versioned, human-editable YAML ruleset.
+- `src/rentless_cli/classifier.py` — deterministic classifier (bashlex-based).
+- `src/rentless_cli/gate.py` — confirmation flow (y/n, typed phrase, deny-by-default).
+- `src/rentless_cli/audit.py` — append-only JSONL audit log with secret redaction.
+- `src/rentless_cli/executor.py` — subprocess execution wrapper with per-tier timeouts.
+- `src/rentless_cli/planner.py` — pluggable LLM planner interface (`NullPlanner` offline default).
+- `src/rentless_cli/mcp_host.py` — MCP server registration and per-server scoping stub.
+- `src/rentless_cli/cli.py` — CLI commands: `run`, `classify`, `rules list`, `logs query`.
 - `tests/` — pytest suite covering classification, ruleset editing, audit logging, and the gate.
 
 ## Usage
@@ -37,16 +37,16 @@ are decomposed and classified sub-command by sub-command.
 pip install -e ".[dev]"
 
 # Classify a command without executing it (dry-run)
-gatekeeper classify "rm -rf /tmp/foo"
+rentless classify "rm -rf /tmp/foo"
 
 # List current tier mappings
-gatekeeper rules list
+rentless rules list
 
 # Run a task through the planner + gate (offline mode treats the task as a raw shell command)
-gatekeeper run "ls -la"
+rentless run "ls -la"
 
 # Query the audit log
-gatekeeper logs query --decision denied
+rentless logs query --decision denied
 ```
 
 ## Running tests

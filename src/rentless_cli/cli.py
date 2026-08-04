@@ -16,7 +16,7 @@ from .gate import ConfirmationGate
 from .planner import NullPlanner, PlannedAction
 from .ruleset import Ruleset
 
-app = typer.Typer(help="gatekeeper-cli: Tiered-Permission CLI AI Agent")
+app = typer.Typer(help="rentless-cli: Tiered-Permission CLI AI Agent")
 console = Console()
 
 
