@@ -48,9 +48,11 @@ def execute_shell_command(
         )
     except subprocess.TimeoutExpired as exc:
         duration = time.monotonic() - start
+        stdout = exc.stdout if isinstance(exc.stdout, str) else ""
+        stderr = exc.stderr if isinstance(exc.stderr, str) else ""
         return ExecutionResult(
-            stdout=exc.stdout or "" if isinstance(exc.stdout, str) else "",
-            stderr=(exc.stderr or "") if isinstance(exc.stderr, str) else "",
+            stdout=stdout,
+            stderr=stderr,
             exit_code=-1,
             duration_seconds=duration,
             timed_out=True,

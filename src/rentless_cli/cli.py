@@ -44,7 +44,8 @@ def run(
     if batch:
         console.print("[bold]Planned actions:[/bold]")
         for i, action in enumerate(actions, 1):
-            console.print(f"  {i}. {action.kind}: {action.command or f'{action.server}/{action.tool}'}")
+            action_label = action.command or f"{action.server}/{action.tool}"
+            console.print(f"  {i}. {action.kind}: {action_label}")
         if not typer.confirm("Proceed to review each action?", default=True):
             raise typer.Exit(code=1)
 

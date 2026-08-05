@@ -77,3 +77,9 @@ def test_mcp_write_tool_is_tier2():
     rs = default_ruleset()
     result = classify_mcp_call("filesystem", "write_file", rs)
     assert result.tier == Tier.T2
+
+
+def test_redirection_is_not_tier1():
+    rs = default_ruleset()
+    assert classify_shell_command("echo hi > file.txt", rs).tier >= Tier.T3
+    assert classify_shell_command("cat a >> b", rs).tier >= Tier.T3

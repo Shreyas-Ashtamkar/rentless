@@ -43,6 +43,11 @@ def _extract_simple_commands(node) -> list[list[str]]:
                 for part in n.parts
                 if getattr(part, "kind", None) == "word"
             ]
+            has_redirection = any(
+                getattr(part, "kind", None) == "redirect" for part in n.parts
+            )
+            if has_redirection:
+                words.append("__REDIRECT__")
             if words:
                 commands.append(words)
         for part in getattr(n, "parts", []) or []:
@@ -105,6 +110,14 @@ def classify_shell_command(command: str, ruleset: Ruleset) -> ClassificationResu
 
 
 def _classify_single_argv(argv: list[str], ruleset: Ruleset) -> tuple[Tier, str, str]:
+    if "__REDIRECT__" in argv:
+        command_name = argv[0] if argv else ""
+        return (
+            Tier.T3,
+            f"shell-redirect:{command_name}",
+            "Shell output redirection can modify files and requires confirmation.",
+        )
+
     argv_str = " ".join(argv)
     command_name = argv[0] if argv else ""
 
